@@ -4,10 +4,10 @@ import com.shsxt.base.BaseService;
 import com.shsxt.crm.dao.UserMapper;
 import com.shsxt.crm.model.UserModel;
 import com.shsxt.crm.vo.User;
-import com.shsxt.utils.AssertUtil;
-import com.shsxt.utils.Md5Util;
+import com.shsxt.crm.utils.AssertUtil;
+import com.shsxt.crm.utils.Md5Util;
 
-import com.shsxt.utils.UserIDBase64;
+import com.shsxt.crm.utils.UserIDBase64;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

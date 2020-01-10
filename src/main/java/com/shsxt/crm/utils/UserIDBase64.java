@@ -1,4 +1,4 @@
-package com.shsxt.utils;
+package com.shsxt.crm.utils;
 
 import org.apache.commons.lang3.StringUtils;
 

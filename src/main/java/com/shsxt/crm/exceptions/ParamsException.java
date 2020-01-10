@@ -1,4 +1,4 @@
-package com.shsxt.exceptions;
+package com.shsxt.crm.exceptions;
 
 /**
  * 自定义参数异常

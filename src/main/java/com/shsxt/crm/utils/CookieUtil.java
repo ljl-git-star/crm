@@ -1,4 +1,4 @@
-package com.shsxt.utils;
+package com.shsxt.crm.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;

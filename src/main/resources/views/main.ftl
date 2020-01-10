@@ -5,6 +5,7 @@
     <script type="text/javascript" src="${ctx}/static/js/main.js"></script>
 </head>
 <body class="easyui-layout">
+
 <div region="north" style="height: 78px;background-color: #E0ECFF">
     <table style="padding: 5px" width="100%">
         <tr>
@@ -17,6 +18,7 @@
         </tr>
     </table>
 </div>
+
 <div region="center">
     <div class="easyui-tabs" fit="true" border="false" id="tabs">
         <div title="首页" data-options="iconCls:'icon-home'">
@@ -24,13 +26,13 @@
         </div>
     </div>
 </div>
+
 <div region="west" style="width: 200px" title="导航菜单" split="true">
         <div class="easyui-accordion" data-options="fit:true,border:false">
             <div title="营销管理" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
                     <a href="javascript:openTab('营销机会管理','sale_chance/index','icon-yxjhgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-yxjhgl'" style="width: 150px">营销机会管理</a>
                     <a href="javascript:openTab('客户开发计划','cus_dev_plan/index','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 150px">客户开发计划</a>
             </div>
-
 
        <div title="客户管理"  data-options="iconCls:'icon-khgl'" style="padding:10px;">
             <a href="javascript:openTab('客户信息管理','customer/index','icon-khxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khxxgl'" style="width: 150px;">客户信息管理</a>
@@ -49,10 +51,9 @@
             <a href="javascript:openTab('客户服务分析','report/2','icon-khfwfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khfwfx'" style="width: 150px;">客户服务分析</a>
             <a href="javascript:openTab('客户流失分析','report/3','icon-khlsfx')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khlsfx'" style="width: 150px;">客户流失分析</a>
         </div>
+
         <div title="基础数据管理"  data-options="iconCls:'icon-jcsjgl'" style="padding:10px">
-
             <a href="javascript:openTab('产品信息查询','product/index','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 150px;">产品信息查询</a>
-
         </div>
 
         <div title="系统管理"  data-options="iconCls:'icon-item'" style="padding:10px">
@@ -65,6 +66,7 @@
     </div>
 
 </div>
+
 <div region="south"  style="height:55px;background-color: #E0ECFF" align="center">
     版本所有 上海尚学堂 <a href="http://www.shsxt.com" target="_blank">www.shsxt.com</a>(2016-2026)<br/>
     上海尚学堂地址：上海市松江区荣乐东路2369弄45号绿地伯顿大厦2层 咨询电话：021-67690939<br/>
