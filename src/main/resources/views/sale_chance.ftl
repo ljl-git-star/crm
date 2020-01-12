@@ -2,7 +2,7 @@
 <html>
 <head>
     <#include "common.ftl" >
-    <script type="text/javascript" src="${ctx}/static/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/common.js"></script>
     <script type="text/javascript" src="${ctx}/static/js/sale.chance.js"></script>
 </head>
 <body style="margin: 1px">
@@ -46,5 +46,54 @@
         <a href="javascript:searchSaleChance()" class="easyui-linkbutton" iconCls="icon-search" plain="true">搜索</a>
     </div>
 </div>
+
+<div id="dlg" class="easyui-dialog" style="width:700px;height:400px;padding: 10px 20px"
+     closed="true" buttons="#dlg-buttons">
+    <form id="fm" method="post">
+        <table cellspacing="8px">
+            <tr>
+                <td>客户名称：</td>
+                <td><input type="text" id="customerName" name="customerName" class="easyui-validatebox" required="true"/> <font color="red">*</font></td>
+                <td>    </td>
+                <td>机会来源</td>
+                <td><input type="text" id="chanceSource" name="chanceSource" /></td>
+            </tr>
+            <tr>
+                <td>联系人：</td>
+                <td><input type="text" id="linkMan" name="linkMan"   class="easyui-validatebox" required="true"/> <font color="red">*</font></td>
+                <td>    </td>
+                <td>联系电话：</td>
+                <td><input type="text" id="linkPhone" name="linkPhone"  class="easyui-validatebox" required="true"/><font color="red">*</font></td>
+            </tr>
+            <tr>
+                <td>成功几率(%)：</td>
+                <td><input type="text" id="cgjl" name="cgjl" /></td>
+                <td colspan="3">    </td>
+            </tr>
+            <tr>
+                <td>概要：</td>
+                <td colspan="4"><input type="text" id="overview" name="overview" style="width: 420px"/></td>
+            </tr>
+            <tr>
+                <td>机会描述：</td>
+                <td colspan="4">
+                    <textarea rows="5" cols="50" id="description" name="description"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>指派给：</td>
+                <td><input class="easyui-combobox" id="assignMan" name="assignMan" data-options="panelHeight:'auto',editable:false,valueField:'trueName',textField:'trueName',url:'${ctx}/user/queryCustomerManager.do'"/></td>
+            </tr>
+        </table>
+        <input name="id" type="hidden"/>
+    </form>
+</div>
+<div id="dlg-buttons">
+    <a href="javascript:saveOrUpdateSaleChance()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
+    <a href="javascript:closeSaleChanceDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+</div>
+
+
+
 </body>
 </html>
