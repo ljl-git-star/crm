@@ -16,21 +16,21 @@
     id, user_name, user_pwd, true_name, email, phone, is_valid, create_date, update_date
   </sql>
 
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from t_user
     where id = #{id,jdbcType=INTEGER}
   </select>
 
-    <select id="queryUserByUserName" parameterType="string" resultType="com.shsxt.crm.vo.User">
+   <select id="queryUserByUserName" parameterType="string" resultType="com.shsxt.crm.vo.User">
       select
       <include refid="Base_Column_List"/>
       from t_user
       where is_valid=1 and user_name=#{userName}
     </select>
 
-    <insert id="insertSelective" parameterType="com.shsxt.crm.vo.User" >
+   <insert id="insertHasKey" parameterType="com.shsxt.crm.vo.User" useGeneratedKeys="true" keyProperty="id">
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -92,7 +92,7 @@
     </trim>
   </insert>
 
-  <update id="updateByPrimaryKeySelective" parameterType="com.shsxt.crm.vo.User" >
+   <update id="updateByPrimaryKeySelective" parameterType="com.shsxt.crm.vo.User" >
     update t_user
     <set >
       <if test="userName != null" >
@@ -122,5 +122,27 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByParams" parameterType="com.shsxt.crm.query.UserQuery" resultType="com.shsxt.crm.vo.User">
+    select
+      u.*,
+      IFNULL(GROUP_CONCAT(ur.role_id),"") as rids
+    from t_user u LEFT JOIN t_user_role ur on u.id  =ur.user_id
+    <where>
+      is_valid=1
+      <if test="null !=userName and userName !=''">
+        and user_name like concat('%',#{userName},'%')
+      </if>
+      <if test="null !=phone and phone !=''">
+        and phone =#{phone}
+      </if>
+      <if test="null !=trueName and trueName !=''">
+        and true_name =#{trueName}
+      </if>
+    </where>
+    GROUP BY u.id
+  </select>
+
+
 
 </mapper>

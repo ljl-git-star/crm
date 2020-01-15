@@ -29,7 +29,7 @@
 
 <div region="west" style="width: 200px" title="导航菜单" split="true">
         <div class="easyui-accordion" data-options="fit:true,border:false">
-            <div title="营销管理" data-options="selected:true,iconCls:'icon-yxgl'" style="padding: 10px">
+            <div title="营销管理" data-options="iconCls:'icon-yxgl'" style="padding: 10px">
                     <a href="javascript:openTab('营销机会管理','sale_chance/index','icon-yxjhgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-yxjhgl'" style="width: 150px">营销机会管理</a>
                     <a href="javascript:openTab('客户开发计划','cus_dev_plan/index','icon-khkfjh')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-khkfjh'" style="width: 150px">客户开发计划</a>
             </div>
@@ -56,7 +56,7 @@
             <a href="javascript:openTab('产品信息查询','product/index','icon-cpxxgl')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-cpxxgl'" style="width: 150px;">产品信息查询</a>
         </div>
 
-        <div title="系统管理"  data-options="iconCls:'icon-item'" style="padding:10px">
+        <div title="系统管理"  data-options="selected:true,iconCls:'icon-item'" style="padding:10px">
             <a href="javascript:openPasswordModifyDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-modifyPassword'" style="width: 150px;">修改密码</a>
             <a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'" style="width: 150px;">安全退出</a>
             <a href="javascript:openTab('用户管理','user/index','icon-user')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-user'" style="width: 150px;">用户管理</a>

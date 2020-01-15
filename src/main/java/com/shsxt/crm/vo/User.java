@@ -1,6 +1,9 @@
 package com.shsxt.crm.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
+import java.util.List;
 
 public class User {
     private Integer id;
@@ -17,9 +20,31 @@ public class User {
 
     private Integer isValid;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateDate;
+
+    private List<Integer> roleIds;
+
+    private String rids;
+
+    public String getRids() {
+        return rids;
+    }
+
+    public void setRids(String rids) {
+        this.rids = rids;
+    }
+
+    public List<Integer> getRoleIds() {
+        return roleIds;
+    }
+
+    public void setRoleIds(List<Integer> roleIds) {
+        this.roleIds = roleIds;
+    }
 
     public Integer getId() {
         return id;

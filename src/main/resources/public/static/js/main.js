@@ -29,6 +29,12 @@ function logout(){
 function openPasswordModifyDialog() {
     $("#dlg").dialog("open").dialog("setTitle","密码修改");
 }
+
+
+function closePasswordModifyDialog() {
+    $("#dlg").dialog("close");
+}
+
 function modifyPassword() {
     $("#fm").form("submit",{
         url:ctx+"/user/updatePassword",
