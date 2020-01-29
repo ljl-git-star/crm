@@ -38,27 +38,27 @@
 </div>
 
 
-<div id="dlg" class="easyui-dialog" style="width:650px;height:350px;padding: 10px 20px"
+
+<div id="dlg" class="easyui-dialog" style="width:600px;height:300px;padding: 10px 20px"
      closed="true" buttons="#dlg-buttons">
     <form id="fm" method="post">
         <table cellspacing="8px">
             <tr>
                 <td>用户名：</td>
                 <td><input type="text" id="userName" name="userName" class="easyui-validatebox" required="true"/> <font color="red">*</font></td>
-                <td>  </td>
-                <td>真实名：</td>
+                <td>    </td>
+                <td>真实名</td>
                 <td><input type="text" id="trueName" name="trueName" /></td>
             </tr>
             <tr>
                 <td>邮箱：</td>
                 <td><input type="text" id="email" name="email"   class="easyui-validatebox" required="true"/>
                     <font color="red">*</font></td>
-                <td>  </td>
+                <td>    </td>
                 <td>联系电话：</td>
                 <td><input type="text" id="phone" name="phone"  class="easyui-validatebox" required="true"/>
                     <font color="red">*</font></td>
             </tr>
-
             <tr>
                 <td>角色：</td>
                 <td>
@@ -66,6 +66,7 @@
                            valueField="id" textField="text" url="${ctx}/role/queryAllRoles"
                            panelHeight="auto" editable="false" multiple="true" style="width: 240px;"/>
                 </td>
+
             </tr>
 
         </table>
@@ -76,6 +77,8 @@
     <a href="javascript:saveOrUpdateUser()" class="easyui-linkbutton" iconCls="icon-ok">保存</a>
     <a href="javascript:closeUserDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 </div>
+
+
 
 
 </body>

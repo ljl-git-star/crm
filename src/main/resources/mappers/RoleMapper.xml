@@ -9,41 +9,20 @@
     <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
     <result column="is_valid" property="isValid" jdbcType="INTEGER" />
   </resultMap>
-
   <sql id="Base_Column_List" >
     id, role_name, role_remark, create_date, update_date, is_valid
   </sql>
-
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_role
     where id = #{id,jdbcType=INTEGER} and is_valid=1
   </select>
-
   <select id="queryAllRoles" resultType="map">
-      select id,role_name as text
-      from t_role
-      where is_valid=1
+        select id,role_name as text
+        from t_role
+        where is_valid=1
   </select>
-
-  <select id="selectByParams" parameterType="com.shsxt.crm.query.RoleQuery" resultType="com.shsxt.crm.vo.Role">
-    select <include refid="Base_Column_List"/>
-    from t_role
-    <where>
-      is_valid=1
-      <if test="null !=roleName and roleName !=''">
-        and role_name =#{roleName}
-      </if>
-    </where>
-  </select>
-
-  <select id="queryRoleByRoleName" parameterType="string" resultType="com.shsxt.crm.vo.Role">
-    select <include refid="Base_Column_List"/>
-    from t_role
-    where is_valid=1 and role_name=#{roleName}
-  </select>
-
   <insert id="insertSelective" parameterType="com.shsxt.crm.vo.Role" >
     insert into t_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -87,7 +66,6 @@
       </if>
     </trim>
   </insert>
-
   <update id="updateByPrimaryKeySelective" parameterType="com.shsxt.crm.vo.Role" >
     update t_role
     <set >
@@ -109,5 +87,23 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <select id="selectByParams" parameterType="com.shsxt.crm.query.RoleQuery" resultType="com.shsxt.crm.vo.Role">
+    select <include refid="Base_Column_List"/>
+    from t_role
+    <where>
+      is_valid=1
+      <if test="null !=roleName and roleName !=''">
+        and role_name =#{roleName}
+      </if>
+    </where>
+  </select>
+  <select id="queryRoleByRoleName" parameterType="string" resultType="com.shsxt.crm.vo.Role">
+    select <include refid="Base_Column_List"/>
+    from t_role
+    where is_valid=1 and role_name=#{roleName}
+  </select>
+
 
 </mapper>

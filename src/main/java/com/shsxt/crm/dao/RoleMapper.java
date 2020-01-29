@@ -11,4 +11,5 @@ public interface RoleMapper extends BaseMapper<Role,Integer> {
     public List<Map<String,Object>> queryAllRoles();
 
     public Role queryRoleByRoleName(String roleName);
+
 }

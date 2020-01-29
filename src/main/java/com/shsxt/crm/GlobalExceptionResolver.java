@@ -1,6 +1,7 @@
 package com.shsxt.crm;
 
 import com.alibaba.fastjson.JSON;
+import com.shsxt.crm.exceptions.AuthFailedException;
 import com.shsxt.crm.exceptions.NoLoginException;
 import com.shsxt.crm.exceptions.ParamsException;
 import com.shsxt.crm.model.ResultInfo;
@@ -18,18 +19,16 @@ import java.io.PrintWriter;
 public class GlobalExceptionResolver implements HandlerExceptionResolver {
 
 
-
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
 
+
         /**
-         *  首先判断异常类型
-         *      如果异常类型为未登录异常  执行视图转发
+         * 首先判断异常类型
+         *   如果异常类型为未登录异常  执行视图转发
          */
-
         ModelAndView mv=new ModelAndView();
-
-        if (ex instanceof NoLoginException){
+        if(ex instanceof NoLoginException){
             NoLoginException ne = (NoLoginException) ex;
             mv.setViewName("no_login");
             mv.addObject("msg",ne.getMsg());
@@ -37,20 +36,22 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
             return mv;
         }
 
-        /**
-         * 方法返回值 类型判断
-         *      约定 如果方法级别存在 @ResponseBody 方法响应的内容为json 否则为视图
-         *          handler 参数类型为 HandlerMethod
-         *  方法返回
-         *      视图 : 默认错误页面
+
+
+        /**方法返回值类型判断:
+         *    如果方法级别存在@ResponseBody 方法响应内容为json  否则视图
+         *    handler 参数类型为HandlerMethod
+         * 返回值
+         *    视图:默认错误页面
          *
-         *      json : 错误的json信息
+         *
+         *
+         *    json:错误的json信息
          */
 
         mv.setViewName("errors");
         mv.addObject("code",400);
         mv.addObject("msg","系统异常,请稍后再试...");
-
         if (handler instanceof HandlerMethod) {
             HandlerMethod hm = (HandlerMethod) handler;
             ResponseBody responseBody = hm.getMethod().getDeclaredAnnotation(ResponseBody.class);
@@ -60,6 +61,11 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
                  */
                 if(ex instanceof  ParamsException){
                     ParamsException pe = (ParamsException) ex;
+                    mv.addObject("msg",pe.getMsg());
+                    mv.addObject("code",pe.getCode());
+                }
+                if(ex instanceof AuthFailedException){
+                    AuthFailedException pe = (AuthFailedException) ex;
                     mv.addObject("msg",pe.getMsg());
                     mv.addObject("code",pe.getCode());
                 }
@@ -73,6 +79,11 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
                 resultInfo.setMsg("系统错误，请稍后再试!");
                 if(ex instanceof ParamsException){
                     ParamsException pe = (ParamsException) ex;
+                    resultInfo.setCode(pe.getCode());
+                    resultInfo.setMsg(pe.getMsg());
+                }
+                if(ex instanceof AuthFailedException){
+                    AuthFailedException pe = (AuthFailedException) ex;
                     resultInfo.setCode(pe.getCode());
                     resultInfo.setMsg(pe.getMsg());
                 }
