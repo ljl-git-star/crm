@@ -19,3 +19,35 @@ function searchModules() {
     })
 }
 
+
+
+function openModuleAddDialog() {
+    $("#parentId").combobox("setValue",$("#pId").val());
+    openDialog("dlg","菜单添加");
+}
+
+function closeModuleDialog() {
+    closeDialog("dlg");
+}
+
+
+function  clearFormData(){
+    $("#moduleName").val("");
+    $("#moduleStyle").val("");
+    $("#optValue").val("");
+    $("#orders").val("");
+    $("input[name='id']").val("");
+}
+
+function saveOrUpdateModule() {
+    saveOrUpdateRecode(ctx+"/module/save",ctx+"/module/update","dlg",searchModules,clearFormData);
+}
+
+
+function openModuleModifyDialog() {
+    openModifyDialog("dg","fm","dlg","菜单更新");
+}
+
+function deleteModule() {
+    deleteRecode("dg",ctx+"/module/delete",searchModules);
+}

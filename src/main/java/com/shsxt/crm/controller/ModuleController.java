@@ -2,8 +2,10 @@ package com.shsxt.crm.controller;
 
 import com.shsxt.base.BaseController;
 import com.shsxt.crm.dto.TreeDto;
+import com.shsxt.crm.model.ResultInfo;
 import com.shsxt.crm.query.ModuleQuery;
 import com.shsxt.crm.service.ModuleService;
+import com.shsxt.crm.vo.Module;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,11 +50,39 @@ public class ModuleController extends BaseController {
         }
     }
 
-
     @RequestMapping("list")
     @ResponseBody
     public Map<String,Object> queryModulesByParams(ModuleQuery moduleQuery){
         return moduleService.queryByParamsForDataGrid(moduleQuery);
     }
+
+
+
+    @RequestMapping("save")
+    @ResponseBody
+    public ResultInfo saveModule(Module module){
+        moduleService.saveModule(module);
+        return success("菜单添加成功!");
+    }
+
+    @RequestMapping("queryAllModulesByGrade")
+    @ResponseBody
+    public List<Map<String,Object>> queryAllModulesByGrade(Integer grade){
+        return moduleService.queryAllModulesByGrade(grade);
+    }
+
+  /*  @RequestMapping("update")
+    @ResponseBody
+    public ResultInfo updateModule(Module module){
+        moduleService.updateModule(module);
+        return success("菜单更新成功");
+    }
+
+    @RequestMapping("delete")
+    @ResponseBody
+    public ResultInfo deleteModule(Integer id){
+        moduleService.deleteModuleById(id);
+        return success("菜单删除成功");
+    }*/
 
 }
